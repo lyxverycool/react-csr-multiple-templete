@@ -67,10 +67,12 @@ function createContainer(ContainerName) {
 function getContainerTemp(ContainerName) {
   const _cn = ContainerName.toLocaleLowerCase()
   return `import React, { Component } from 'react'
+import { hot } from 'react-hot-loader/root'
 import '../../less/normal.less'
 import './style.less'
 
-export default class ${ContainerName} extends Component {
+@hot
+class ${ContainerName} extends Component {
   state={}
 
   componentDidMount() {}
@@ -82,6 +84,8 @@ export default class ${ContainerName} extends Component {
     )
   }
 }
+
+export default ${ContainerName}
 	`
 }
 

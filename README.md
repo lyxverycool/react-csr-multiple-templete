@@ -26,6 +26,17 @@
 
 # 创建容器
 
-`npm run ctc [containerName]` 需要在routers里面加一下路由
+`npm run ctc [containerName]` 需要在routers里面加一下路由,当然你也可以写个脚本rewrite.
 
-注意 containerName 首字母必须大写，例如： npm run ctr Test
+注意 containerName 首字母必须大写，例如： npm run ctc Test
+
+# 别名
+
+* ~代表./src
+* @代表./src/component
+
+# 热更新
+
+引入 `import { hot } from 'react-hot-loader/root'`
+
+添加 @hot 装饰器
