@@ -62,6 +62,7 @@ function createContainer(ContainerName) {
     .then(() => fse.outputFile(path.join(_root, 'index.js'), containerTemp))
     .then(() => fse.outputFile(path.join(_root, 'render.js'), renderTemp))
     .then(() => fse.outputFile(path.join(_root, 'style.less'), styleTemp))
+    .then(reWriteRouter(ContainerName))
 }
 
 function getContainerTemp(ContainerName) {
@@ -106,4 +107,17 @@ const render = Component => {
 }
 
 render(App)`
+}
+
+async function reWriteRouter(ContainerName) {
+  try {
+    const _cn = ContainerName.toLocaleLowerCase()
+    let routerString = await fse.readFile('./src/routes/router.js', 'utf8')
+    routerString = routerString.replace("import loadable from '@loadable/component'\r\n",
+      `import loadable from '@loadable/component'\r\n\r\nconst ${ContainerName} = loadable(() => import('../container/${ContainerName}/index'))`)
+    routerString = routerString.replace("}]", `}, {\r\n  path: '/${_cn}',\r\n  exact: true,\r\n  component: ${ContainerName}\r\n}]`)
+    await fse.writeFile('./src/routes/router.js', routerString)
+  } catch (err) {
+    console.error(err)
+  }
 }

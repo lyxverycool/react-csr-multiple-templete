@@ -26,7 +26,9 @@
 
 # 创建容器
 
-`npm run ctc [containerName]` 需要在routers里面加一下路由,当然你也可以写个脚本rewrite.
+`npm run ctc [containerName]`.
+
+会自动添加相应文件夹和路由
 
 注意 containerName 首字母必须大写，例如： npm run ctc Test
 
