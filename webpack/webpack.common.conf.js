@@ -56,7 +56,12 @@ const webpackConfig = env => ({
       {
         test: /\.less$/,
         use: [
-          env === 'development' ? 'style-loader' : MiniCssExtractPlugin.loader,
+          {
+            loader: env === 'development' ? 'style-loader' : MiniCssExtractPlugin.loader,
+            options: env === 'development' ? {} : {
+              publicPath: '../../dist/',
+            }
+          },
           'css-loader',
           {
             loader: 'postcss-loader',
