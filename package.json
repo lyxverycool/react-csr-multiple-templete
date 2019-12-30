@@ -6,7 +6,7 @@
     "ctc": "node creatContainer.js",
     "start": "npm run start:dev",
     "build": "npm run build:prod",
-    "buildOne": "cross-env NODE_ENV=production webpack --env production --config webpack/webpack.common.conf.js --GloryList",
+    "buildOne": "cross-env NODE_ENV=production webpack --env production --config webpack/webpack.common.conf.js --Main",
     "start:dev": "cross-env NODE_ENV=development webpack-dev-server --env development --config webpack/webpack.common.conf.js --open",
     "start:prod": "cross-env NODE_ENV=production webpack-dev-server --env development --config webpack/webpack.common.conf.js --open",
     "build:dev": "cross-env NODE_ENV=development webpack --env production --config webpack/webpack.common.conf.js",

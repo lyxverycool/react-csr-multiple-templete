@@ -14,7 +14,7 @@ module.exports = {
   },
   devServer: {
     contentBase: path.join(__dirname, '../dist/'),
-    host: 'localhost',
+    host: 'localhost', //0.0.0.0
     port: 8081,
     hot: true,
     overlay: true,
